@@ -27,14 +27,13 @@
             margin-top: 20px;
         }
         input {
-            padding: 20px;
+            padding: 10px;
             width: 100%;
-            max-width: 600px;
+            max-width: 400px;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-top: 10px;
             text-align: center;
-            font-size: 18px;
         }
         button {
             padding: 10px 20px;
@@ -58,13 +57,12 @@
         }
         p {
             text-align: center; /* Zentriert den Text */
-            text-transform: none; /* Keine automatische Großschreibung */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>KI Hausaufgabenhelfer 🤖</h1> <!-- Titel angepasst -->
+        <h1>KI Hausaufgabenhelfer 🤖</h1>
         <p>Gib deine Frage ein und erhalte eine "intelligente" Antwort!</p>
         <div class="input-container">
             <input type="text" id="question" placeholder="Frag mich alles...">
