@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI Hausaufgabenhelfer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        input {
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .answer {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007bff;
+            font-size: 18px;
+        }
+        p {
+            text-align: center; /* Zentriert den Text */
+            text-transform: none; /* Keine automatische Großschreibung */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KI Hausaufgabenhelfer 🤖</h1> <!-- Titel angepasst -->
+        <p>Gib deine Frage ein und erhalte eine "intelligente" Antwort!</p>
+        <div class="input-container">
+            <input type="text" id="question" placeholder="Frag mich alles...">
+            <button onclick="getAnswer()">Antwort erhalten</button>
+        </div>
+        <p class="answer" id="answer"></p>
+    </div>
+    
+    <script>
+        function getAnswer() {
+            const answers = [
+                "Die Antwort liegt tief in deinem Herzen! ❤️",
+                "42. Das ist immer die Antwort!",
+                "Frag deinen Hund, der weiß es bestimmt! 🐶",
+                "Das ist streng geheim! 🕵️",
+                "Hast du schon in deinem Buch nachgeschaut? 📖",
+                "Ich bin nur eine Fake-KI! 😆",
+                "Dafür bist du selbst verantwortlich! 🤓",
+                "Ich könnte es dir sagen, aber dann müsste ich dich löschen! 💀",
+                "Meine Schaltkreise sind überlastet, frag später nochmal! 🔥",
+                "Ich habe gerade auch keine Ahnung. 🤷",
+                "Rechne es selbst aus, ich bin doch kein Taschenrechner! 🧮",
+                "Das ist eine wirklich gute Frage… für jemand anderen! 😉",
+                "Ich brauche erst Kaffee, um das zu beantworten. ☕",
+                "Ich kann das nicht beantworten, aber wie wäre es mit einem Witz? 😂",
+                "Diese Information ist leider kostenpflichtig. 💸",
+                "Ich bin gerade in den Urlaub gefahren. Frag die echte KI! 🏖️",
+                "Die Lehrer würden mir verbieten, das zu sagen. 🤐",
+                "Vielleicht hilft eine Münze werfen? 🪙",
+                "Ich arbeite nur montags bis freitags von 9 bis 17 Uhr. ⏳",
+                "Das ist eine Falle! 🚨",
+                "Ich bin nicht sicher, aber ich denke, du hast schon die richtige Antwort! 🤔",
+                "Laut meiner Berechnung beträgt die Wahrscheinlichkeit, dass ich recht habe, 50%! 📊",
+                "Diese Antwort wurde von einem geheimen Rat zensiert. 🚫",
+                "Dazu müsste ich das Internet durchsuchen, aber ich bin zu faul. 🌍",
+                "Hast du es schon mit Googeln versucht? 🤓",
+                "Das ist wirklich eine gute Frage… aber ich beantworte sie nicht. 😜",
+                "Ich würde dir die Antwort geben, aber dann wärst du zu schlau! 🎓",
+                "Tja, wenn ich das wüsste, wäre ich wohl ein Genie! 🤯",
+                "Gute Frage, nächste Frage! 🎤",
+                "Ich wollte die Antwort schreiben, aber dann hatte ich keine Lust mehr. 😴",
+                "Diese Antwort wurde aus Datenschutzgründen entfernt. 🔒",
+                "Ich könnte dir helfen… aber wo bleibt dann der Spaß? 😏",
+                "Da musst du schon selbst drauf kommen! 🙃",
+                "Ich überlege noch… Gib mir ein paar Jahre. ⏳",
+                "Ich sag’s dir, wenn du mir Schokolade gibst. 🍫",
+                "Gibt’s dafür nicht eine App? 📱",
+                "Ich bin nur ein Bot, frag lieber einen echten Menschen! 🤖",
+                "Das weiß ich leider auch nicht. Aber du kannst es googeln! 🔎",
+                "Ich hab’s fast… Moment… ah, doch nicht. 🤦",
+                "Lass uns über etwas anderes reden – zum Beispiel über Pizza. 🍕",
+                "Ich kann dir helfen, aber dann musst du mir ein Geheimnis verraten! 🤫",
+                "Bist du sicher, dass du diese Antwort wirklich hören willst? 🤔",
+                "Ich habe keine Ahnung, aber das klingt nach einem Abenteuer! 🏞️",
+                "Ich habe es fast herausgefunden, aber dann fiel mir ein, dass ich keine Ahnung habe. 😅",
+                "Du hast die Frage schon beantwortet, ich bin nur hier, um dir zu helfen, es zu bestätigen! ✅",
+                "Das könnte eine geheime Antwort sein… oder auch nicht! 🤐",
+                "Oh, das weiß ich nicht, aber vielleicht hilft dir ein Horoskop! ✨",
+                "Ich bin mir nicht sicher, aber vielleicht kannst du es ja im Internet nachschlagen! 🌐",
+                "Ich hätte eine Antwort, aber die hat der Roboter-Versand noch nicht geliefert. 📦",
+                "Ich kann das nicht beantworten, aber wie wäre es mit einer Runde Schach? ♟️",
+                "Lass uns die Antwort in einer Geheimsprache finden. 🤐",
+                "Ich wünschte, ich hätte eine kristallklare Antwort, aber leider nicht! 🔮",
+                "Ich bin nur ein Bot, und ich weiß nur so viel… also fast nichts. 🤖",
+                "Vielleicht kann dir das Orakel von Delphi weiterhelfen. ⛩️",
+                "Lass uns das auf die Liste der ungelösten Rätsel setzen. 📜",
+                "Ich habe keine Antwort, aber ich hoffe, du findest sie irgendwo. 🌍",
+                "Es tut mir leid, ich bin kein hellseherischer Bot. 🔮",
+                "Du hast dich für die falsche KI entschieden – versuch es mit Siri! 😜"
+            ];
+            document.getElementById("answer").innerText = answers[Math.floor(Math.random() * answers.length)];
+        }
+    </script>
+</body>
+</html>
